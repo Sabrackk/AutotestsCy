@@ -48,6 +48,14 @@ describe('Проверка авторизации', function () {
         cy.get('#messageHeader').should('be.visible');                              // Окно с результатом видно пользователю    
         cy.get('#exitMessageButton > .exitIcon').should('be.visible')               // Кнопка закрыть вида пользователю
     })
+    it('6. Заглавные буквы в логине', function () {
+        cy.get('#mail').type('GERMAN@DoLnIkOv.Ru');                                 // Вводим логин c заглавными буквами
+        cy.get('#pass').type('iLoveqastudio1');                                     // Вводим верный пароль
+        cy.get('#loginButton').click();                                             // Нажимаем кнопку войти
+        cy.get('#messageHeader').contains('Авторизация прошла успешно');            // Сообщение "Авторизация прошла успешно"
+        cy.get('#messageHeader').should('be.visible');                              // Окно с результатом видно пользователю    
+        cy.get('#exitMessageButton > .exitIcon').should('be.visible')               // Кнопка закрыть вида пользователю
+    })
 
  }),
  describe ('Покупка аватара в покемонах', function(){
